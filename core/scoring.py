@@ -135,7 +135,9 @@ BLOCKED_TERMS = [
     "staff engineer",
     "head of",
     "vp",
-    "vice president"
+    "vice president",
+    "social media",
+    "data science"
 ]
 
 
