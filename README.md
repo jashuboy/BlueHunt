@@ -140,14 +140,22 @@ to automate scans at scheduled intervals.
 
 ---
 # 📷 Assets
+# Telegram Alert
 ![Telegram Alert](assets/telegram_alert.png)
+# Job Database
 ![Excal Database](assets/excel_database.png)
-![Scoring](assets/scoring_1.png)
-![Scoring](assets/scoring_2.png)
-![Scoring](assets/scoring_3.png)
-![Scoring](assets/scoring_4.png)
-![Scoring](assets/scoring_5.png)
-![Scoring](assets/scoring_6.png)
+# Target Roles
+![Target Roles](assets/scoring_1.png)
+# Skills and Experience
+![Skills and Experience](assets/scoring_2.png)
+# Locations
+![Locations](assets/scoring_3.png)
+# Negative Weights
+![Negative Weights](assets/scoring_4.png)
+# Experience Penalties
+![Experience Penalties](assets/scoring_5.png)
+# Blocked Terms
+![Blocked Terms](assets/scoring_6.png)
 
 ---
 
