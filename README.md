@@ -139,41 +139,23 @@ Windows Task Scheduler
 to automate scans at scheduled intervals.
 
 ---
-# 📱 Example Telegram Alert
-
-```text
-🚨 BlueHunt Alert
-
-🎯 Role:
-SOC Analyst L1
-
-🏢 Company:
-ABC Technologies
-
-📍 Location:
-Hyderabad
-
-💼 Experience:
-0-1 Years
-
-🌐 Platform:
-LinkedIn
-
-📊 Score:
-91/100
-
-🏅 Rating:
-🔥 Excellent Match
-
-✅ Matched Skills:
-SOC, Splunk, SIEM, Incident Response
-
-❌ Negative Indicators:
-None
-
-🔗 Apply:
-https://job-link
-```
+# 📷 Assets
+# Telegram Alert
+![Telegram Alert](assets/telegram_alert.png)
+# Job Database
+![Excal Database](assets/excel_database.png)
+# Target Roles
+![Target Roles](assets/scoring_1.png)
+# Skills and Experience
+![Skills and Experience](assets/scoring_2.png)
+# Locations
+![Locations](assets/scoring_3.png)
+# Negative Weights
+![Negative Weights](assets/scoring_4.png)
+# Experience Penalties
+![Experience Penalties](assets/scoring_5.png)
+# Blocked Terms
+![Blocked Terms](assets/scoring_6.png)
 
 ---
 
