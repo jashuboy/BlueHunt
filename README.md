@@ -4,8 +4,6 @@
 <h1 align="center">
  BlueHunt
 </h1>
-<p align="center">
-
  <p align="center">
   <strong>Automated Cybersecurity Job Acquisition Pipeline</strong>
 </p>
@@ -14,6 +12,7 @@
   Automating cybersecurity job discovery through intelligent multi-platform aggregation,
   filtering, scoring, and real-time notifications.
 </p>
+<p align="center">
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
 ![Telegram](https://img.shields.io/badge/Telegram-Bot_API-blue)
