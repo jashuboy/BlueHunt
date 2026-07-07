@@ -3,6 +3,7 @@
 ![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
 ![Telegram](https://img.shields.io/badge/Telegram-Bot_API-blue)
 ![Status](https://img.shields.io/badge/Status-Active-success)
+![License](https://img.shields.io/badge/License-MIT-orange)
 ## Automated Cybersecurity Job Acquisition Pipeline
 
 ## 📌 Problem Statement
@@ -20,9 +21,18 @@ Challenges include:
 - Time wasted switching between multiple job platforms.
 
 BlueHunt automates this entire process.
+## Workflow
 
+1. Fetch jobs from supported platforms.
+2. Extract structured job information.
+3. Filter irrelevant and senior-level roles.
+4. Score jobs based on skill relevance.
+5. Remove duplicate entries.
+6. Store unique jobs in Excel.
+7. Send Telegram notifications for high-quality matches.
+8. 
 ## ⚡Features
-- ✅ Multi-platform cybersecurity job aggregation
+- ✅ Multi-platform cybersecurity job scraping
 - ✅ SOC and Cybersecurity focused scoring engine
 - ✅ Fresher-friendly job prioritization
 - ✅ Senior role filtering
@@ -47,32 +57,32 @@ Currently supported:
 # 🏗 Architecture
 
 ```text
-                ┌──────────────┐
-                │ Task Scheduler│
-                └──────┬───────┘
-                       │
-                       ▼
-                  main.py
-                       │
-       ┌───────────────┼───────────────┐
-       ▼               ▼               ▼
-   Foundit         LinkedIn         Naukri
-       │               │               │
-       └───────┬───────┴───────┬───────┘
-               ▼               ▼
-          Internshala Fetcher
-                       │
-                       ▼
-              Scoring Engine
-                       │
-                       ▼
-             Duplicate Detection
-                       │
-                       ▼
-                Excel Database
-                       │
-                       ▼
-               Telegram Alerts
+ LinkedIn      Foundit      Naukri      Internshala
+      \           |           |            /
+       \          |           |           /
+        +------------------------------+
+        |      Job Fetchers            |
+        +------------------------------+
+                     |
+                     ▼
+        +------------------------------+
+        |     Filtering Engine         |
+        +------------------------------+
+                     |
+                     ▼
+        +------------------------------+
+        |      Scoring Engine          |
+        +------------------------------+
+                     |
+                     ▼
+        +------------------------------+
+        |   Duplicate Detection        |
+        +------------------------------+
+                     |
+             +-------+-------+
+             |               |
+             ▼               ▼
+      Excel Database   Telegram Alerts
 ```
 ---
 
@@ -189,7 +199,7 @@ BlueHunt/
 
 # 🔮 Future Improvements
 
-- Resume-to-job matching engine
+- AI-powered Resume Match Engine
 - Company whitelist and blacklist
 - Daily job digest notifications
 - Application tracking dashboard
