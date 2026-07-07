@@ -2,11 +2,13 @@
 <img src="assets/banner.png" width="900">
 </p>
 # 🚀 BlueHunt
+
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
 ![Telegram](https://img.shields.io/badge/Telegram-Bot_API-blue)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![License](https://img.shields.io/badge/License-MIT-orange)
+
 ## Automated Cybersecurity Job Acquisition Pipeline
 
 ## 📌 Problem Statement
