@@ -1,15 +1,25 @@
 <p align="center">
 <img src="assets/banner.png" width="900">
 </p>
-# 🚀 BlueHunt
+<h1 align="center">
+ BlueHunt
+</h1>
+<p align="center">
 
+ <p align="center">
+  <strong>Automated Cybersecurity Job Acquisition Pipeline</strong>
+</p>
+
+<p align="center">
+  Automating cybersecurity job discovery through intelligent multi-platform aggregation,
+  filtering, scoring, and real-time notifications.
+</p>
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
 ![Telegram](https://img.shields.io/badge/Telegram-Bot_API-blue)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![License](https://img.shields.io/badge/License-MIT-orange)
-
-## Automated Cybersecurity Job Acquisition Pipeline
+</p>
 
 ## 📌 Problem Statement
 As a cybersecurity fresher, I experienced the challenge of identifying relevant opportunities despite having the required technical skills.
@@ -35,7 +45,8 @@ BlueHunt automates this entire process.
 5. Remove duplicate entries.
 6. Store unique jobs in Excel.
 7. Send Telegram notifications for high-quality matches.
-8. 
+
+
 ## ⚡Features
 - ✅ Multi-platform cybersecurity job scraping
 - ✅ SOC and Cybersecurity focused scoring engine
@@ -48,7 +59,17 @@ BlueHunt automates this entire process.
 - ✅ Automated scheduling using Windows Task Scheduler
 - ✅ Experience-aware ranking engine
 - ✅ Location-aware filtering for Indian cybersecurity roles
-- 
+
+# 📊 Project Highlights
+
+- 🔍 Aggregates jobs from **4 platforms**
+- 🎯 Uses **20+ cybersecurity search keywords**
+- 📈 Prioritizes entry-level SOC and Cybersecurity roles
+- 🚫 Automatically filters senior positions
+- 🔁 Eliminates duplicate postings
+- 📬 Sends Telegram alerts for high-quality matches
+- ⏰ Supports scheduled execution via Windows Task Scheduler
+
 ## 🌐 Supported Platforms
 Currently supported:
 
@@ -158,7 +179,7 @@ to automate scans at scheduled intervals.
 # Telegram Alert
 ![Telegram Alert](assets/telegram_alert.png)
 # Job Database
-![Excal Database](assets/excel_database.png)
+![Excel Database](assets/excel_database.png)
 # Target Roles
 ![Target Roles](assets/scoring_1.png)
 # Skills and Experience
@@ -205,11 +226,10 @@ BlueHunt/
 # 🔮 Future Improvements
 
 - AI-powered Resume Match Engine
+- AI-based resume tailoring
 - Company whitelist and blacklist
 - Daily job digest notifications
 - Application tracking dashboard
-- AI-based resume tailoring
-- AI-powered resume match scoring
 - Interview preparation recommendations
 
 ---
