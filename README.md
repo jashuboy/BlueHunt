@@ -1,3 +1,6 @@
+<p align="center">
+<img src="assets/banner.png" width="900">
+</p>
 # 🚀 BlueHunt
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![Playwright](https://img.shields.io/badge/Playwright-Automation-green)
