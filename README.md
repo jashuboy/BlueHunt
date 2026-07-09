@@ -84,7 +84,7 @@ Currently supported:
 
 # 🏗 Architecture
 
-![Architecture/Workflow](https://assets/architecture_workflow.png)
+![Architecture/Workflow](assets/architecture_workflow.png)
 
 
 ---
