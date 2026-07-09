@@ -84,34 +84,9 @@ Currently supported:
 
 # 🏗 Architecture
 
-```text
- LinkedIn      Foundit      Naukri      Internshala
-      \           |           |            /
-       \          |           |           /
-        +------------------------------+
-        |      Job Fetchers            |
-        +------------------------------+
-                     |
-                     ▼
-        +------------------------------+
-        |     Filtering Engine         |
-        +------------------------------+
-                     |
-                     ▼
-        +------------------------------+
-        |      Scoring Engine          |
-        +------------------------------+
-                     |
-                     ▼
-        +------------------------------+
-        |   Duplicate Detection        |
-        +------------------------------+
-                     |
-             +-------+-------+
-             |               |
-             ▼               ▼
-      Excel Database   Telegram Alerts
-```
+![Architecture/Workflow](https://assets/architecture_workflow.png)
+
+
 ---
 
 # 🛠 Tech Stack
