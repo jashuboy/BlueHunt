@@ -19,6 +19,7 @@ WEIGHTS = {
     "dfir": 25,
     "blue team": 20,
     "security operations": 20,
+    "application security": 15,
 
     # ===============================
     # SKILLS
@@ -44,8 +45,8 @@ WEIGHTS = {
     "0-1 years": 40,
     "0 to 1 years": 40,
     "1 year": 20,
-    "intern": 25,
-    "internship": 25,
+    "intern": 15,
+    "internship": 15,
 
     # ===============================
     # LOCATIONS
@@ -122,7 +123,9 @@ NEGATIVE_WEIGHTS = {
 
 
 BLOCKED_TERMS = [
+    "HR",
     "l2",
+    "marketing",
     "level 2",
     "l3",
     "level 3",

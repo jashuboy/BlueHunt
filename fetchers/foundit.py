@@ -7,20 +7,9 @@ SEARCH_TERMS = [
     "SOC L1",
     "Security Analyst",
     "Cybersecurity Analyst",
-    "SIEM Analyst",
-    "Splunk Analyst",
-    "Threat Hunter",
     "Threat Intelligence Analyst",
     "Incident Response Analyst",
-    "Incident Responder",
-    "DFIR Analyst",
-    "Blue Team Analyst",
-    "Cyber Defense Analyst",
-    "Security Monitoring Analyst",
     "Cyber Security Engineer",
-    "Information Security Analyst",
-    "Cybersecurity Intern",
-    "Security Intern",
     "SOC Engineer",
     "Security Operations Center Analyst"
 ]
@@ -52,13 +41,6 @@ for term in SEARCH_TERMS:
 
 INDIAN_LOCATIONS = [
     "hyderabad",
-    "bangalore",
-    "bengaluru",
-    "pune",
-    "chennai",
-    "noida",
-    "gurgaon",
-    "mumbai",
     "india",
     "remote"
 ]
@@ -70,15 +52,24 @@ def fetch_foundit_jobs():
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
-        page = browser.new_page()
+        context = browser.new_context()
+        page = context.new_page()
 
         for search_url in SEARCH_URLS:
             print(f"\nOpening {search_url}")
-            page.goto(search_url, wait_until="domcontentloaded")
-            page.wait_for_timeout(7000)
+            page.goto(search_url, wait_until="domcontentloaded", timeout=60000)
+            
+            with open("foundit.html", "w", encoding="utf-8") as f:
+                f.write(page.content())
 
             cards = page.locator("a[href*='/job/']")
-            total_cards = cards.count()
+            count = cards.count()
+            print(f"Cards found: {count}")
+            if count == 0:
+                continue
+            MAX_CARDS = 30
+            total_cards = min(count, MAX_CARDS)
+
             print(f"Cards found: {total_cards}")
 
             for i in range(total_cards):
@@ -97,61 +88,58 @@ def fetch_foundit_jobs():
 
                     seen_urls.add(href)
                     title = card.inner_text().strip()
-
-                    # Open job page for richer extraction
                     job_page = browser.new_page()
+                    
                     try:
                         job_page.goto(
                             href,
                             wait_until="domcontentloaded",
                             timeout=30000
                         )
-                        job_page.wait_for_timeout(3000)
+
                         page_text = job_page.locator("body").inner_text()
-                    except Exception:
-                        page_text = ""
+
+                        lower = page_text.lower()
+                        company = "Unknown"
+                        location = "Unknown"
+                        experience = "Unknown"
+                        lines = page_text.split("\n")
+
+                        # Corrected and aligned lines iterator
+                        for idx, line in enumerate(lines):
+                            if line.strip() == title.strip():
+                                if idx + 1 < len(lines):
+                                    company = lines[idx + 1].strip()
+                                if idx + 2 < len(lines):
+                                    location = lines[idx + 2].strip()
+                                if idx + 3 < len(lines):
+                                    next_line = lines[idx + 3].strip()
+                                    if next_line == "India":
+                                        location = f"{location} India"
+                                break
+
+                        # Experience extraction
+                        if (
+                            "fresher" in lower or
+                            "0-1 years" in lower or
+                            "0 to 1 years" in lower or
+                            "1 year" in lower
+                        ):
+                            experience = "0-1 Years"
+
+                        jobs.append(
+                            {
+                                "title": title,
+                                "company": company,
+                                "location": location,
+                                "experience": experience,
+                                "raw_text": page_text,
+                                "url": href,
+                                "platform": "Foundit"
+                            }
+                        )
                     finally:
                         job_page.close()
-
-                    lower = page_text.lower()
-                    company = "Unknown"
-                    location = "Unknown"
-                    experience = "Unknown"
-                    lines = page_text.split("\n")
-
-                    # Corrected and aligned lines iterator
-                    for idx, line in enumerate(lines):
-                        if line.strip() == title.strip():
-                            if idx + 1 < len(lines):
-                                company = lines[idx + 1].strip()
-                            if idx + 2 < len(lines):
-                                location = lines[idx + 2].strip()
-                            if idx + 3 < len(lines):
-                                next_line = lines[idx + 3].strip()
-                                if next_line == "India":
-                                    location = f"{location} India"
-                            break
-
-                    # Experience extraction
-                    if (
-                        "fresher" in lower or
-                        "0-1 years" in lower or
-                        "0 to 1 years" in lower or
-                        "1 year" in lower
-                    ):
-                        experience = "0-1 Years"
-
-                    jobs.append(
-                        {
-                            "title": title,
-                            "company": company,
-                            "location": location,
-                            "experience": experience,
-                            "raw_text": page_text,
-                            "url": href,
-                            "platform": "Foundit"
-                        }
-                    )
 
                 except Exception as e:
                     print(f"Error: {e}")
@@ -160,3 +148,7 @@ def fetch_foundit_jobs():
 
     print(f"\nFINAL JOB COUNT: {len(jobs)}")
     return jobs
+
+
+if __name__ == "__main__":
+    fetch_foundit_jobs()

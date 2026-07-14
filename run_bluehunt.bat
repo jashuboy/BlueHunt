@@ -4,7 +4,7 @@ echo ====================================
 echo Starting BlueHunt...
 echo ====================================
 
-cd /d C:\Users\shank\OneDrive\Desktop\BlueHunt_Production - job acquisition pipeline
+cd C:\Users\jashw\OneDrive\Desktop\BlueHunt
 
 py main.py
 

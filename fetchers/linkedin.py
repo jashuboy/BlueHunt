@@ -7,25 +7,16 @@ SEARCH_TERMS = [
     "Security Analyst",
     "Cybersecurity Analyst",
     "SIEM Analyst",
-    "Splunk Analyst",
-    "Threat Hunter",
-    "Threat Intelligence Analyst",
-    "Incident Response Analyst",
-    "DFIR Analyst",
-    "Blue Team Analyst",
-    "Cybersecurity Intern"
+    "Incident Response Analyst"
 ]
 
 LOCATIONS = [
     "India",
     "Hyderabad",
-    "Bangalore",
-    "Pune",
-    "Chennai",
-    "Noida",
-    "Mumbai",
     "Remote"
 ]
+
+MAX_JOBS = 120
 
 
 def fetch_linkedin_jobs():
@@ -36,10 +27,13 @@ def fetch_linkedin_jobs():
     with sync_playwright() as p:
 
         browser = p.chromium.launch(
-            headless=False
+            headless=True
         )
 
         page = browser.new_page()
+
+        page.set_default_timeout(30000)
+        page.set_default_navigation_timeout(30000)
 
         for role in SEARCH_TERMS:
 
@@ -64,7 +58,10 @@ def fetch_linkedin_jobs():
                         timeout=30000
                     )
 
-                    page.wait_for_timeout(5000)
+                    page.wait_for_load_state(
+                        "networkidle",
+                        timeout=10000
+                    )
 
                     body = page.locator(
                         "body"
@@ -76,11 +73,16 @@ def fetch_linkedin_jobs():
 
                         title = lines[i].strip()
 
+                        if not title:
+                            continue
+
+                        title_lower = title.lower()
+
                         if (
-                            "soc" in title.lower()
-                            or "cyber" in title.lower()
-                            or "security analyst" in title.lower()
-                            or "siem" in title.lower()
+                            "soc" in title_lower
+                            or "cyber" in title_lower
+                            or "security analyst" in title_lower
+                            or "siem" in title_lower
                         ):
 
                             company = "Unknown"
@@ -112,10 +114,17 @@ def fetch_linkedin_jobs():
                                 }
                             )
 
+                            if len(jobs) >= MAX_JOBS:
+                                browser.close()
+
+                                print(
+                                    f"\nLinkedIn jobs fetched: {len(jobs)}"
+                                )
+
+                                return jobs
+
                 except Exception as e:
-                    print(
-                        f"LinkedIn error: {e}"
-                    )
+                    print(f"LinkedIn error: {e}")
 
         browser.close()
 

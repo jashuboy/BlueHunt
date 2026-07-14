@@ -1,3 +1,10 @@
+"""
+Stable implementation.
+
+This fetcher is intentionally left unchanged because
+it consistently retrieves jobs. Avoid modifying the
+browser behavior unless debugging.
+"""
 from playwright.sync_api import sync_playwright
 from urllib.parse import quote
 
@@ -138,3 +145,6 @@ def fetch_naukri_jobs():
 
     print(f"\nNaukri jobs fetched: {len(jobs)}")
     return jobs
+
+if __name__ == "__main__":
+    fetch_naukri_jobs()
