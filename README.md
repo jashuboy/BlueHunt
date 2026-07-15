@@ -177,25 +177,43 @@ to automate scans at scheduled intervals.
 ```text
 BlueHunt/
 │
+├── assets/
+│   ├── architecture_workflow.png
+│   ├── banner.png
+│   ├── blocked_terms.png
+│   ├── excel_database.png
+│   ├── experience_penalties.png
+│   ├── locations.png
+│   ├── negative_weights.png
+│   ├── skills.png
+│   ├── target_roles.png
+│   └── telegram_alert.png
+│
 ├── core/
-│   ├── filtering.py
-│   ├── scoring.py
-│   ├── storage.py
-│   └── telegram_bot.py
+│   ├── filtering.py          # Rule-based filtering engine
+│   ├── scheduler.py          # Scheduled execution utilities
+│   ├── scoring.py            # Rule-based scoring engine
+│   ├── storage.py            # Excel database management
+│   └── telegram_bot.py       # Telegram notification service
+│
+├── data/
+│   └── jobs_database.xlsx    # Stores unique job postings
 │
 ├── fetchers/
 │   ├── foundit.py
+│   ├── internshala.py
 │   ├── linkedin.py
-│   ├── naukri.py
-│   └── internshala.py
+│   └── naukri.py
 │
-├── data/
-│
-├── config.py
-├── main.py
+├── .env                      # Environment variables
+├── .gitattributes
+├── .gitignore
+├── config.py                 # Project configuration
+├── LICENSE
+├── main.py                   # BlueHunt pipeline entry point
+├── README.md
 ├── requirements.txt
-├── run_bluehunt.bat
-└── README.md
+└── run_bluehunt.bat          # Windows launcher
 ```
 
 ---
