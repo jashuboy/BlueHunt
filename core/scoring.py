@@ -96,11 +96,11 @@ NEGATIVE_WEIGHTS = {
     # EXPERIENCE PENALTIES
     # ===============================
 
-    "2 years": 30,
-    "2+ years": 20,
+    "2 years": -30,
+    "2+ years": -30,
 
-    "3 years": 20,
-    "3+ years": 10,
+    "3 years": -40,
+    "3+ years": -50,
 
     "4 years": -80,
     "4+ years": -90,
@@ -145,16 +145,12 @@ BLOCKED_TERMS = [
 
 
 def is_blocked_role(job):
-
-    text = (
-        job.get("title", "") + " " +
-        job.get("raw_text", "")
-    ).lower()
+    title = job.get("title", "").lower()
 
     for term in BLOCKED_TERMS:
-        if term in text:
+        if term in title:
+            print(f"Blocked -> {job['title']} (Matched: {term})")
             return True
-
     return False
 
 
@@ -201,6 +197,13 @@ def calculate_score(job):
 
     else:
         rating = "⚪ Weak Match"
+
+        print("=" * 60)
+        print(f"Title : {job['title']}")
+        print(f"Score : {score}")
+        print(f"Matched : {matched}")
+        print(f"Negative : {negative_matches}")
+        print("=" * 60)
 
     return (
         score,

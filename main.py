@@ -102,14 +102,30 @@ def run_bluehunt():
     blocked_count = 0
     weak_count = 0
     saved_count = 0
+    
+    saved_by_platform = {
+        "Foundit": 0,
+        "LinkedIn": 0,
+        "Naukri": 0,
+        "Internshala": 0
+    }
+
+    alerts_by_platform = {
+        "Foundit": 0,
+        "LinkedIn": 0,
+        "Naukri": 0,
+        "Internshala": 0
+    }
 
     for job in jobs:
 
         if job_exists(job["url"]):
+            print(f"Duplicate -> {job['title']}")
             duplicate_count += 1
             continue
 
         if not is_relevant(job):
+            print(f"Filtered -> {job['title']}")
             filtered_count += 1
             continue
 
@@ -125,6 +141,7 @@ def run_bluehunt():
 
         save_job(job, score, rating, matched)
         saved_count += 1
+        saved_by_platform[job["platform"]] += 1
 
         if score >= 70:
             send_job_notification(
@@ -135,6 +152,7 @@ def run_bluehunt():
                 rating
             )
             sent_count += 1
+            alerts_by_platform[job["platform"]] += 1
 
     total_runtime = (time.time() - total_start) / 60
 
@@ -182,6 +200,20 @@ def run_bluehunt():
     print(f"Telegram Alerts     : {sent_count}")
 
     print()
+    
+    print("Jobs Saved by Platform")
+    print("-" * 50)
+
+    for platform, count in saved_by_platform.items():
+        print(f"{platform:<13}: {count}")
+
+    print()
+
+    print("Telegram Alerts by Platform")
+    print("-" * 50)
+
+    for platform, count in alerts_by_platform.items():
+        print(f"{platform:<13}: {count}")
 
     print(f"Total Runtime       : {total_runtime:.2f} minutes")
 
