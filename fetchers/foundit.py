@@ -59,8 +59,6 @@ def fetch_foundit_jobs():
             print(f"\nOpening {search_url}")
             page.goto(search_url, wait_until="domcontentloaded", timeout=60000)
             
-            with open("foundit.html", "w", encoding="utf-8") as f:
-                f.write(page.content())
 
             cards = page.locator("a[href*='/job/']")
             count = cards.count()
